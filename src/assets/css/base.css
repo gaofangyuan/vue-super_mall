@@ -1,0 +1,18 @@
+@import "./normalize.css";
+
+/* 
+:root   获取根元素html
+--color-text    定义一个变量，使用时color: var(--color-text)
+*/
+:root {
+  --color-text: #666666;
+  --background: #f6f6f6;
+  --clor-tint: #ff5777;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: Arial,Helvetica,sans-serif;
+  background: var(--background);
+}
