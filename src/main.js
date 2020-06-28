@@ -3,6 +3,7 @@ import App from './App.vue'
 import {vue_const} from '@/common/const.js'
 import router from '@/router'
 
+
 Vue.config.productionTip = false
 
 new Vue({
@@ -11,3 +12,4 @@ new Vue({
 }).$mount('#app')
 
 vue_const()
+
