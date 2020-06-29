@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <script type="text/javascript" src="http://y0.ifengimg.com/package/special_20120803_7492/js/jquery-1.7.2.min.js"></script>
+    </head>
+
+    <body>
+        <div>超级厉害的</div>
+        <script type="text/javascript">
+            $.ajax({
+                type: "get",
+                url: "http://127.0.0.1/123",
+                async: true,
+                success: function(res) {
+                    console.log(res)
+                }
+            });
+        </script>
+        
+    </body>
+
+</html>
