@@ -35,6 +35,7 @@ export default {
   bottom: 0;
   border-top: 1px solid #dddddd;
   box-shadow: 0px -5px 50px 1px rgba(0, 0, 0, .1);
+  z-index: 99;
 }
 
 </style>

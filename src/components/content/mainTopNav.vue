@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper">
+  <div class="mainTopNav">
     <topNav>
       <p class="nat_left" slot="nat_left">&lt;</p>
       <p class="nat_center" slot="nat_center">{{title}}</p>
@@ -31,7 +31,7 @@ export default {
 }
 </script>
 <style scoped>
-.wrapper{padding: 0; margin: 0;}
+.mainTopNav{padding: 0; margin: 0;position: fixed; top: 0; left: 0; right: 0;z-index: 99;}
 .nat_center, .nat_left, .nat_right {
   margin: 0;
   padding: 0;

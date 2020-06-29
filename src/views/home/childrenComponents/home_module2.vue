@@ -16,24 +16,10 @@ export default {
   components: {},
   props: {
     img: {
-      type: Array,
-      default() {
-        return [
-          'http://gw.alicdn.com/imgextra/i4/74/O1CN01kN84Sl1CPvuclr5U6_!!74-0-lubanu.jpg'
-          ,
-          'http://gw.alicdn.com/imgextra/i4/74/O1CN01kN84Sl1CPvuclr5U6_!!74-0-lubanu.jpg'
-          ,
-          'http://gw.alicdn.com/imgextra/i4/74/O1CN01kN84Sl1CPvuclr5U6_!!74-0-lubanu.jpg'
-          ,
-          'http://gw.alicdn.com/imgextra/i4/74/O1CN01kN84Sl1CPvuclr5U6_!!74-0-lubanu.jpg'
-        ]
-      }
+      type: Array
     },
     title: {
-      type: Array,
-      default() {
-        return ['菜单1', '菜单2', '菜单3', '菜单4']
-      }
+      type: Array
     }
   },
   data() {

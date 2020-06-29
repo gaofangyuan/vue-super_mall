@@ -1,13 +1,17 @@
 <template>
   <div class="wrapper">
     购物车
+    <awesomeSwiper></awesomeSwiper>
   </div>
 </template>
 
 <script>
+import awesomeSwiper from '@/components/content/swiper/awesome-swiper'
 export default {
   name: '',
-  components: {},
+  components: {
+    awesomeSwiper
+  },
   props: {},
   data() {
     return {

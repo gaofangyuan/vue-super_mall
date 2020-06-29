@@ -25,18 +25,12 @@ export default {
     someList: {
       type: Array,
       default() {
-        return [
-          'http://gw.alicdn.com/imgextra/i4/74/O1CN01kN84Sl1CPvuclr5U6_!!74-0-lubanu.jpg'
-          ,
-          'http://gw.alicdn.com/imgextra/i4/74/O1CN01kN84Sl1CPvuclr5U6_!!74-0-lubanu.jpg'
-          ,
-          'http://gw.alicdn.com/imgextra/i4/74/O1CN01kN84Sl1CPvuclr5U6_!!74-0-lubanu.jpg'
-        ]
+        return []
       }
     },
     titleList: {
       type: Array,
-      default() {return ['http://gw.alicdn.com/imgextra/i4/74/O1CN01kN84Sl1CPvuclr5U6_!!74-0-lubanu.jpg',222,333]}
+      default() {return []}
     },
     link: {
       type: Array,

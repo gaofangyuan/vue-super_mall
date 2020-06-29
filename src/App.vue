@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <mainTopNav :title="title"></mainTopNav>
+    <!-- <mainTopNav :title="title"></mainTopNav> -->
     <router-view></router-view>
     <mainTabBar/>
   </div>
@@ -8,13 +8,13 @@
 
 <script>
 import mainTabBar from '@/components/content/mainTabBar'
-import mainTopNav from '@/components/content/mainTopNav'
+// import mainTopNav from '@/components/content/mainTopNav'
 
 export default {
   name: 'App',
   components: {
     mainTabBar,
-    mainTopNav
+    // mainTopNav
   },
   props: {},
   data() {
@@ -40,5 +40,11 @@ export default {
 #app {
   margin: 0;
   padding: 0;
+}
+#mainTopNav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
 }
 </style>
