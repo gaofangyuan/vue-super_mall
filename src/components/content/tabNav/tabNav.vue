@@ -1,8 +1,7 @@
 <template>
   <div class="tabNav">
     <div class="tabNav_item" v-for="(item, index) in tabnav" :key="index" @click="clkInx(index)">
-      <!-- <p :class="{tabNav_item_active: index == num ? true : false}">{{item}}</p> -->
-      <p>{{item}}</p>
+      <p :class="{tabNav_item_active: index == num ? true : false}">{{item}}</p>
     </div>
   </div>
 </template>

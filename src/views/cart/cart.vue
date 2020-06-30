@@ -1,16 +1,71 @@
 <template>
-  <div class="wrapper">
+  <div id="cart">
     购物车
-    <awesomeSwiper></awesomeSwiper>
+    <div class="wrapper">
+      <ul class="content">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
   </div>
 </template>
 
 <script>
-import awesomeSwiper from '@/components/content/swiper/awesome-swiper'
+import BScroll from 'better-scroll'
+
 export default {
   name: '',
   components: {
-    awesomeSwiper
+    Swiper,
+    SwiperSlide
   },
   props: {},
   data() {
@@ -21,9 +76,24 @@ export default {
   computed: {},
   methods: {},
   created() {},
-  mounted() {}
+  mounted() {
+    new BScroll(document.querySelector('.wrapper'), {
+
+    })
+  }
 }
 </script>
 <style scoped>
-.wrapper{padding: 0; margin: 0;}
+  #cart {
+    padding: 0; 
+    margin: 0;
+  }
+  .wrapper{
+    padding: 0; 
+    margin: 0;
+    width: 100%;
+    height: 300px;
+    background: olive;
+    overflow: hidden;
+  }
 </style>

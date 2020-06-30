@@ -1,4 +1,5 @@
 <template>
+<div>
     <swiper class="swiper" :options="swiperOption">
       <div class="swiper-scrollbar" slot="scrollbar">
         <div class="swiper-scrollbar-drag">
@@ -7,18 +8,18 @@
       <swiper-slide>
         <div class="">
           <img src="https://www.swiper.com.cn/templets/default/images/logo.png" />
-          <p style="color:#333333;">asfasf</p>
-          <p style="color:#333333;">asfasf</p>
-          <p style="color:#333333;">asfasf</p>
         </div>
       </swiper-slide>
       <swiper-slide>Slide 2</swiper-slide>
       <swiper-slide>Slide 3</swiper-slide>
     </swiper>
+</div>
 </template>
 
 <script>
 import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
+
+
 
 import 'swiper/css/swiper.css'
 
@@ -57,7 +58,8 @@ export default {
   },
   watch: {},
   computed: {},
-  methods: {},
+  methods: {
+  },
   created() {
     
   },

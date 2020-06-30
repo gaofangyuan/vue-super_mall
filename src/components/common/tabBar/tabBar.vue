@@ -33,8 +33,8 @@ export default {
   left: 0;
   right: 0;
   bottom: 0;
-  border-top: 1px solid #dddddd;
-  box-shadow: 0px -5px 50px 1px rgba(0, 0, 0, .1);
+  border-top: 0px solid #dddddd;
+  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, .1);
   z-index: 99;
 }
 
