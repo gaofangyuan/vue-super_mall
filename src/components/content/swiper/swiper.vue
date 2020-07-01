@@ -5,7 +5,7 @@
       <slider ref="slider" :options="options">
           <!-- slideritem wrapped package with the components you need -->
           <slideritem v-for="(item,index) in someList" :key="index">
-            <a :href="link[index]"><img :src="item" alt=""></a>
+            <a :href="link[index]"><img :src="item" alt="" @load="imgload"></a>
             <p>{{titleList[index]}}</p>
           </slideritem>
           <!-- Customizable loading -->
@@ -61,6 +61,11 @@ export default {
   components: {
     slider,
     slideritem
+  },
+  methods: {
+    imgload() {
+      this.$emit('imgload')
+    }
   },
   created() {
   },

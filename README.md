@@ -23,6 +23,11 @@ network         网络相关
 router          路由
 store           全局变量，vuex大管家
 views           组件
+
+node_modules:
+axios网络请求
+vue-concise-slider轮播
+better-scroll移动端滚动
 ```
 
 ### Customize configuration

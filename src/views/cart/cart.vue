@@ -64,8 +64,6 @@ import BScroll from 'better-scroll'
 export default {
   name: '',
   components: {
-    Swiper,
-    SwiperSlide
   },
   props: {},
   data() {

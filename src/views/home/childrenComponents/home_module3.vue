@@ -2,7 +2,7 @@
   <div class="home_module3">
     <div class="home_m3_f" v-for="(item, index) in img" :key="index">
       <a :href="item.img">
-        <img :src="item.img" alt="" />
+        <img :src="item.img" alt="" @load="imgload" />
         <p>{{item.name}}</p>
       </a>
     </div>
@@ -23,7 +23,11 @@ export default {
   },
   watch: {},
   computed: {},
-  methods: {},
+  methods: {
+    imgload() {
+      this.$emit('imgload')
+    }
+  },
   created() {},
   mounted() {}
 }

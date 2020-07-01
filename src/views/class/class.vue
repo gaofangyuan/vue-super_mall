@@ -3,38 +3,37 @@
     <div class="tabNav">
       <tab-nav :tabnav="['流行', '新款', '精选']" v-on:tabNavClkInx="getTabNavNum"></tab-nav>
     </div>
-    <div class="swiper-container">
-      <!-- Additional required wrapper -->
-      <div class="swiper-wrapper" :style="scrollHeight">
-          <!-- Slides -->
-          <div class="swiper-slide">
-            <scroll :height="scrollHeight" :bScroll="bScroll0">
-              <mall :mall="goods0"></mall>
-            </scroll>
+    <div class="scrollHeight">
+      <scroll height="scrollHeight">
+        <div class="swiper-container">
+          <!-- Additional required wrapper -->
+          <div class="swiper-wrapper">
+              <!-- Slides -->
+              <div class="swiper-slide">
+                
+                  <mall :mall="goods0"></mall>
+                
+              </div>
+              <div class="swiper-slide">
+                  <mall :mall="goods1"></mall>
+              </div>
+              <div class="swiper-slide">
+                  <mall :mall="goods2"></mall>
+              </div>
           </div>
-          <div class="swiper-slide">
-            <scroll :height="scrollHeight" :bScroll="bScroll1">
-              <mall :mall="goods1"></mall>
-            </scroll>
-          </div>
-          <div class="swiper-slide">
-            <scroll :height="scrollHeight" :bScroll="bScroll2">
-              <mall :mall="goods2"></mall>
-            </scroll>
-          </div>
-          ...
-      </div>
-      <!-- If we need pagination -->
-      <div class="swiper-pagination"></div>
+          <!-- If we need pagination -->
+          <div class="swiper-pagination"></div>
 
-      <!-- If we need navigation buttons -->
-      <!-- <div class="swiper-button-prev"></div>
-      <div class="swiper-button-next"></div> -->
+          <!-- If we need navigation buttons -->
+          <!-- <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div> -->
 
-      <!-- If we need scrollbar -->
-      <div class="swiper-scrollbar">
-        <div class="swiper-scrollbar-drag"></div>
-      </div>
+          <!-- If we need scrollbar -->
+          <div class="swiper-scrollbar">
+            <div class="swiper-scrollbar-drag"></div>
+          </div>
+        </div>
+      </scroll>
     </div>
   </div>
 </template>
@@ -69,7 +68,6 @@ export default {
       goods0: [],
       goods1: [],
       goods2: [],
-      scrollHeight: {height: 'calc(100vh - 80px)'}
     }
   },
   watch: {},
@@ -117,12 +115,15 @@ export default {
     margin: 0;
   }
   .tabNav {
+    height: 30px;
     position: relative;
     top: 0;
+    z-index: 99;
+    overflow: hidden;
   }
   .swiper-container {
     position: relative;
-    top: -5px;
+    top: 0px;
   }
   .swiper-wrapper {
     height: auto;
@@ -136,5 +137,9 @@ export default {
   }
   .swiper-scrollbar-drag {
     background: #55A5C5 !important;
+  }
+
+  .scrollHeight {
+    height: calc(100vh - 80px);
   }
 </style>

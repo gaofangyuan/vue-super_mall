@@ -1,5 +1,5 @@
 <template>
-  <div class="tabNav">
+  <div :class="tabnavclass">
     <div class="tabNav_item" v-for="(item, index) in tabnav" :key="index" @click="clkInx(index)">
       <p :class="{tabNav_item_active: index == num ? true : false}">{{item}}</p>
     </div>
@@ -15,6 +15,12 @@ export default {
       type: Array,
       default: function() {
         return ['推荐', '流行', '时尚']
+      }
+    },
+    tabnavclass: {
+      type: String,
+      default() {
+        return 'tabNav'
       }
     }
   },

@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <!-- <mainTopNav :title="title"></mainTopNav> -->
-    <router-view></router-view>
+    <keep-alive>
+      <router-view></router-view>
+    </keep-alive>
     <mainTabBar/>
   </div>
 </template>
