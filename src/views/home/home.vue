@@ -4,7 +4,7 @@
     <main-top-nav title="购物"></main-top-nav>
     <tab-nav tabnavclass="tabNavclass" :tabnav="['流行', '新款', '精选']" @tabNavClkInx="getTabNavNum" v-show="istabNav" ref="tabNav1"></tab-nav>
     <scroll height="wraper" ref="scroll" :probeType="3" :pullUpLoad="true" @scroll="onScroll" @pullingDown="pullingDown" @pullingUp="pullingUp">
-      <oswiper :someList="someList" :options="options" :titleList="titleList" :link="link" @imgload="oswiperImgload = true"></oswiper>
+      <oswiper myswiper="mySwiper" :myswiperitem="myswiperitem" :someList="someList" :options="options" :titleList="titleList" :link="link" @imgload="oswiperImgload = true"></oswiper>
       <homemoudule2 :img="someList" :title="['菜单1', '菜单2', '菜单3', '菜单4']" @imgload="homemoudule2Imgload = true"></homemoudule2>
       <div class="height1em"></div>
       <homemoudule3 :img="homemoudule3_img" @imgload="homemoudule3Imgload = true"></homemoudule3>
@@ -61,6 +61,14 @@ export default {
         loopedSlides:1,//无限滚动前后遍历数
         slidesToScroll:1,//每次滑动项数
       },
+      myswiperitem: `margin: 0;
+        padding: 0;
+        width: 100vw;
+        height: 35vw;
+        object-fit: over;
+        background: #aaaaaa;
+        vertical-align: middle;
+      `,
       message: '',
       banner: '',
       someList: ['loding......'],
@@ -165,7 +173,7 @@ export default {
         // tabNav距离顶部距离赋值给tabOffsetTop
         this.tabOffsetTop = this.$refs.tabNav.$el.offsetTop;
         // 所有组件都有一个属性$el,用于获取组件元素
-        console.log(this.$refs.tabNav.$el.offsetTop);
+        // console.log(this.$refs.tabNav.$el.offsetTop);
         clearInterval(offsetTopTime)
       }
     },200)
@@ -206,6 +214,9 @@ export default {
     height: 0.5em;
   }
 
+  .mySwiper {
+    width:100vw;margin:0px auto; padding: 0;height:35vw;
+  }
 
   .swiper {
     padding-bottom: 49px;

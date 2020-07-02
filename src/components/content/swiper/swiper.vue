@@ -1,11 +1,13 @@
 <template>
   <!-- Make a div wrapped slider,set height and width -->
-  <div style="width:100vw;margin:0px auto; padding: 0;height:35vw">
+  <div :class="myswiper">
       <!-- Using the slider component -->
       <slider ref="slider" :options="options">
           <!-- slideritem wrapped package with the components you need -->
           <slideritem v-for="(item,index) in someList" :key="index">
-            <a :href="link[index]"><img :src="item" alt="" @load="imgload"></a>
+            <a :href="link[index]">
+              <img :style="myswiperitem" :src="item" alt="" @load="imgload">
+            </a>
             <p>{{titleList[index]}}</p>
           </slideritem>
           <!-- Customizable loading -->
@@ -21,6 +23,18 @@ import {getHomeReq} from '@/network/home.js'
 
 export default {
   props: {
+    myswiper: {
+      type: String,
+      default() {
+        return 'mySwiper'
+      }
+    },
+    myswiperitem: {
+      type: String,
+      default() {
+        return 'myswiperitem'
+      }
+    },
     //data list [array]
     someList: {
       type: Array,
@@ -76,13 +90,16 @@ export default {
     margin: 0;
     padding: 0;
   }
-  img {
-    width: 100vw;
-    height: 35vw;
-    object-fit: over;
-    background: #aaaaaa;
-    vertical-align: middle;
+  .mySwiper {
+    width:100vw;margin:0px auto; padding: 0;height:35vw;
   }
+  .myswiperitem {
+    /* width: 100%;
+    height: 35vw; */
+    vertical-align: middle;
+    object-fit: cover;
+  }
+  
   p {
     width: 100vw;
     position: absolute;

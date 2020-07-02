@@ -1,9 +1,7 @@
 <template>
   <div class="mall">
     <div class="mallim" v-for="(item, index) in mall" :key="index">
-      <a :href="item.cartImg">
-        <mall-item :mallImg="item.cartImg" :mallName="item.cartTitle" :mallPrice="item.cartPrice"></mall-item>
-      </a>
+      <mall-item :mallImg="item.cartImg" :mallName="item.cartTitle" :mallPrice="item.cartPrice" @mallClk="mallClk(index)"></mall-item>
     </div>
     <div style="clear: both;"></div>
   </div>
@@ -37,7 +35,12 @@ export default {
   },
   watch: {},
   computed: {},
-  methods: {},
+  methods: {
+    mallClk(index) {
+      this.$router.push('/Detail/' + this.mall[index].id);
+      // console.log(this.$parent)
+    }
+  },
   created() {},
   mounted() {}
 }

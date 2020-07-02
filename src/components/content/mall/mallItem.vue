@@ -1,5 +1,5 @@
 <template>
-  <div class="mall_item">
+  <div class="mall_item" @click="mallClk">
     <img :src="mallImg">
     <p>{{mallName}}</p>
     <h3>{{mallPrice | toFPrice}}</h3>
@@ -21,7 +21,11 @@ export default {
   watch: {},
   computed: {
   },
-  methods: {},
+  methods: {
+    mallClk() {
+      this.$emit('mallClk')
+    }
+  },
   created() {},
   mounted() {},
   filters: {
