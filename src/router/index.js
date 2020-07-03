@@ -4,7 +4,8 @@ const Home = () => import('@/views/home/home')
 const Class = () => import('@/views/class/class')
 const Cart = () => import('@/views/cart/cart')
 const User = () => import('@/views/user/user')
-const Detail = () => import('@/components/content/detail')
+import Detail from '@/components/content/detail'
+// const Detail = () => import('@/components/content/detail')
 
 Vue.use(Router)
 
@@ -52,7 +53,9 @@ const routes = [
 
 const router = new Router({
   routes,
-  linkActiveClass: 'active'
+  linkActiveClass: 'active',
+  // 解决调整页面不再最顶端显示
+  scrollBehavior(to,from,saveTop){ if(saveTop){ return saveTop; }else{ return {x:0,y:0} } }
 })
 
 router.beforeEach((to, from, next) => {

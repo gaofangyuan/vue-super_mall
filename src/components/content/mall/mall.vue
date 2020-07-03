@@ -38,10 +38,20 @@ export default {
   methods: {
     mallClk(index) {
       this.$router.push('/Detail/' + this.mall[index].id);
+      this.$emit('mallClk', index)
+      // location.reload(true);
       // console.log(this.$parent)
+      // const _this = this;
+      // new Promise(function(resolve, rejected) {
+			// 		_this.$router.push('/Detail/' + _this.mall[index].id);
+			// }).then(function() {
+      //     location.reload(true)
+			// })
     }
   },
-  created() {},
+  created() {
+    
+  },
   mounted() {}
 }
 </script>

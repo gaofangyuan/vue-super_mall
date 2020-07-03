@@ -1,9 +1,9 @@
 <template>
   <div class="mainTopNav">
     <topNav>
-      <p class="nat_left" slot="nat_left">&lt;</p>
+      <p class="nat_left" slot="nat_left"></p>
       <p class="nat_center" slot="nat_center">{{title}}</p>
-      <p class="nat_right" slot="nat_right">&times;</p>
+      <p class="nat_right" slot="nat_right"></p>
     </topNav>
   </div>
 </template>

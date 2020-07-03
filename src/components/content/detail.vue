@@ -1,13 +1,15 @@
 <template>
   <div class="detail">
-    <tabNav tabnavclass="tabNavclass" :tabnav="['详情', '参数', '推荐']" @tabNavClkInx="getTabNavNum" v-show="istabNav" ref="tabNav">
+    <back-top btopclass="btopclass" @click.native="backTopClk" v-show="isbackTop"></back-top>
+    <detail-nav :num="detailNavNum" tabnavclass="tabNavclass" :tabnav="['详情', '参数', '推荐']" @tabNavClkInx="getTabNavNum" v-show="istabNav" ref="tabNav">
       <div class="tabNavS" @click="clkback">&lt;</div>
-    </tabNav>
+    </detail-nav>
+    <detail-bottom-nav @addCart="addCart"></detail-bottom-nav>
     <div class="csback" @click="clkback">&lt;&emsp;</div>
     <oswiper myswiper="mySwiper" :myswiperitem="myswiperitem" :someList="someList" :options="options" :titleList="titleList" :link="link" @imgload="isSwoperImg = true"></oswiper>
     
     <div class="title">
-      <h3>{{'￥' + detail.cartPrice}}</h3>
+      <h3>{{'￥' + detail.cartPrice}}</h3>{{$store.state.title}}{{$route.params.id}}
       <p>{{detail.cartTitle + '定制纯色亚麻纱帘成品美式田园卧室客厅飘窗落地窗帘遮光隔断窗纱'}}</p>
     </div>
 
@@ -35,10 +37,7 @@
     <div class="height08" id="li3"></div>
     <div class="d_xq">
       <h3>推荐</h3>
-      <p>{{detail}}</p>
-      <img :src="detail.cartImg" alt="" />
-      <img :src="detail.cartImg" alt="" />
-      <img :src="detail.cartImg" alt="" />
+      <mall :mall="detailTj" @mallClk="mallClk"></mall>
     </div>
     
   </div>
@@ -47,14 +46,20 @@
 <script>
 import {getDetailReq} from '@/network/detail'
 
-import tabNav from '@/components/content/tabNav/tabNav'
+import backTop from '@/components/content/backTop/backTop'
+import detailNav from '@/components/content/detail/detailNav'
+import detailBottomNav from '@/components/content/detail/detailBottomNav'
 import oswiper from '@/components/content/swiper/swiper'
+import mall from '@/components/content/mall/mall'
 
 export default {
   name: 'detail',
   components: {
+    backTop,
     oswiper,
-    tabNav
+    detailNav,
+    detailBottomNav,
+    mall
   },
   props: {},
   data() {
@@ -79,24 +84,34 @@ export default {
       `,
       message: [],
       detail: {},
+      detailTj: [],
       someList: [],
       titleList: [],
       link: [],
+      isbackTop: false,
       istabNav: false,
       li1: null,li2: null,li3: null,
-      isSwoperImg: false
+      isSwoperImg: false,
+      detailNavNum: 0
     }
   },
   watch: {},
   computed: {},
   methods: {
     getDataMessage() {
+      this.detailTj = this.message.mall.mallCart;
+      this.getDataDetail();
+      
+    },
+    getDataDetail() {
       var id = this.$route.params.id;
       for (let i = 0; i < this.message.mall.mallCart.length; i++) {
         if(this.message.mall.mallCart[i].id == id) {
-          this.detail = this.message.mall.mallCart[i];
+          // this.detail = this.message.mall.mallCart[i];
+          this.detail = Object.assign({}, this.detail, this.message.mall.mallCart[i])
         }
       }
+      this.someList = []
       for (let i =0; i < 5; i++) {
         this.someList.push(this.detail.cartImg)
       }
@@ -106,42 +121,62 @@ export default {
       // console.log(scrollTop)
       if(scrollTop > this.li1 - 35) {
         this.istabNav = true
+        this.isbackTop = true
       }else{
         this.istabNav = false
+        this.isbackTop = false
       }
       
       if(scrollTop > this.li3) {
-        this.$refs.tabNav.num = 2;
+        this.detailNavNum = 2;
       }else if(scrollTop > this.li2) {
-        this.$refs.tabNav.num = 1;
+        this.detailNavNum = 1;
       }else{
-        this.$refs.tabNav.num = 0;
+        this.detailNavNum = 0;
       }
+    },
+    backTopClk() {
+      // 回到顶部
+      scrollTo(0, 0);
     },
     getTabNavNum(index) {
       // console.log(index)
       switch(index) {
         case 0:
           document.getElementById('li1').scrollIntoView(true);
-          this.$refs.tabNav.num = 0;
+          this.detailNavNum = 0;
           break;
         case 1:
           document.getElementById('li2').scrollIntoView(true);
-          this.$refs.tabNav.num = 1;
+          this.detailNavNum = 1;
           break;
         case 2:
           document.getElementById('li3').scrollIntoView(true);
-          this.$refs.tabNav.num = 2;
+          this.detailNavNum = 2;
           break;
       }
       
     },
     clkback() {
       // 返回上一个页面
-      history.go(-1);
+      this.$router.go(-1);
+    },
+    mallClk() {
+      this.getDataDetail();
+      location.reload(true)
+    },
+    addCart() {
+      this.$store.state.title.push(this.detail)
     }
   },  
+  watch: {
+    // 数据变化后处理,解决路由跳转数据不刷新问题
+    '$route.path': function() {
+      location.reload(true)
+    }
+  },
   created() {
+    
     // 获取活动路由值
     // console.log(this.$route.params)
     // 获取数据
@@ -151,7 +186,7 @@ export default {
     .then(() => {
       this.getDataMessage();
     }).catch(() => {
-      this.$router.go(0);
+      location.reload(true) 
     })
     
   },
@@ -167,12 +202,23 @@ export default {
         // console.log(this.li1,this.li2,this.li3)
         clearInterval(offsetTopTime)
       }
-    },50)
+    },50);
+    // 返回
+    window.addEventListener("popstate", function(e) {
+      // location.reload(true) 
+      
+    }, false);
   }
 }
 </script>
 <style scoped>
-.detail{padding: 0; margin: 0;position: relative; z-index: 999; background: #ffffff;}
+.detail{padding: 0 0 50px; margin: 0;position: relative; z-index: 999; background: #ffffff;}
+.btopclass {
+  position: fixed;
+  bottom: 54px;
+  right: 5px;
+  z-index: 999;
+}
 .mySwiper {
   width:100vw;margin:0px auto; padding: 0;height:100vw;
 }
@@ -187,13 +233,13 @@ export default {
   position: fixed;
   text-align: center;
   background: #ffffff;
-  height: 35px;
+  height: 44px;
 }
 .tabNavS {
-  height: 35px;
+  height: 44px;
   width: 30px;
   text-align: center;
-  line-height: 35px;
+  line-height: 44px;
   font-family: serif;
 }
 .csback {

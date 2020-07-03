@@ -1,65 +1,12 @@
 <template>
   <div id="cart">
     购物车
-    <div class="wrapper">
-      <ul class="content">
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-      </ul>
-    </div>
+    {{cart}}
+
   </div>
 </template>
 
 <script>
-import BScroll from 'better-scroll'
 
 export default {
   name: '',
@@ -68,16 +15,22 @@ export default {
   props: {},
   data() {
     return {
+      cart: [],
+      cartImg: ''
     }
   },
   watch: {},
-  computed: {},
-  methods: {},
-  created() {},
+  computed: {
+  },
+  methods: {
+  },
+  created() {
+  },
   mounted() {
-    new BScroll(document.querySelector('.wrapper'), {
-
-    })
+  },
+  activated() {
+    this.cart.splice(0, 1, this.$store.state.title);
+    // console.log('进入页面')
   }
 }
 </script>
@@ -85,13 +38,5 @@ export default {
   #cart {
     padding: 0; 
     margin: 0;
-  }
-  .wrapper{
-    padding: 0; 
-    margin: 0;
-    width: 100%;
-    height: 300px;
-    background: olive;
-    overflow: hidden;
   }
 </style>

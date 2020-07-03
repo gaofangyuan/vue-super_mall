@@ -1,12 +1,12 @@
 <template>
   <div id="app">
-    <backTop :btopclass="btopclass" @click.native="backTopClk()" v-show="isbackTop"></backTop>
+    <back-top :btopclass="btopclass" @click.native="backTopClk()" v-show="isbackTop"></back-top>
     <main-top-nav title="购物"></main-top-nav>
     <tab-nav tabnavclass="tabNavclass" :tabnav="['流行', '新款', '精选']" @tabNavClkInx="getTabNavNum" v-show="istabNav" ref="tabNav1"></tab-nav>
     <scroll height="wraper" ref="scroll" :probeType="3" :pullUpLoad="true" @scroll="onScroll" @pullingDown="pullingDown" @pullingUp="pullingUp">
       <oswiper myswiper="mySwiper" :myswiperitem="myswiperitem" :someList="someList" :options="options" :titleList="titleList" :link="link" @imgload="oswiperImgload = true"></oswiper>
       <homemoudule2 :img="someList" :title="['菜单1', '菜单2', '菜单3', '菜单4']" @imgload="homemoudule2Imgload = true"></homemoudule2>
-      <div class="height1em"></div>
+      <div class="height1em"></div>{{$store.state.title}}
       <homemoudule3 :img="homemoudule3_img" @imgload="homemoudule3Imgload = true"></homemoudule3>
       <div class="height5em"></div>
       <tab-nav :tabnav="['流行', '新款', '精选']" @tabNavClkInx="getTabNavNum" ref="tabNav"></tab-nav>
@@ -119,7 +119,7 @@ export default {
     },
 
     backTopClk() {
-      // 条用Bscroll回到顶部
+      // 调用Bscroll回到顶部
       this.$refs.scroll.bScroll.scrollTo(0, 0);
     },
     onScroll(position) {
